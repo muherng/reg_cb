@@ -163,7 +163,9 @@ def get_weights(X,y,w,params):
             v = np.zeros(d)
         #print(np.linalg.norm(v,ord=1))
         #assert(a is not None)
+        #print('a step')
         a = a_step(a,X,resids_sq,v,lr=lr,lam=lam,eta=eta,n=n)
+        #print('end a step')
         # print a
         # print a, np.sum(a)
     return a
@@ -205,7 +207,9 @@ def altmin_step(Xs,Ys,a,params,init=False,alpha=0):
         # scale weights back up by n so alpha parameter behaves like normal
         w = ridge(Xs,Ys,alpha=alpha,a=a*n,intercept=False,standardize=False)
     else:
+        #print('ols')
         w = ols(Xs,Ys,a)
+        #print('done ols')
     # print "OUR ITERATE", w
     a = get_weights(Xs,Ys,w,params)
     return w, a
