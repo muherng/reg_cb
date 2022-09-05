@@ -120,7 +120,8 @@ def v_step(a,X,Sig,eta,tol=0):
         return v[:,0]
     else:
         return np.zeros(shape=v[:,0].shape)
-
+    
+    
 # @jit(nopython=True)
 def a_step(a,X,resids_sq,v,lr,lam,eta,n):
     """ Step to minimize \sum_i a_i resids_sq[i]^2 + \lambda sigma_{max}(X^T diag(1/n - a) X)"""
